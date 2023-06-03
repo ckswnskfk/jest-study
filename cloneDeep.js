@@ -29,9 +29,10 @@ const cloneDeep = (target) => {
   if (target.constructor === Object) {
     result = {};
     for (let prop in target) {
-      if (target.hasOwnProperty(prop)) {
-        result[prop] = cloneDeep(target[prop]);
+      if (!target.hasOwnProperty(prop)) {
+        continue;
       }
+      result[prop] = cloneDeep(target[prop]);
     }
   }
 
